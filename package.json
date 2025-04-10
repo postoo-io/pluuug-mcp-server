@@ -1,0 +1,9 @@
+{
+  "name": "pluuug-mcp-server",
+  "version": "1.0.0",
+  "description": "플러그 openapi를 MCP로 제공하는 패키지",
+  "main": "index.js",
+  "repository": "https://github.com/postoo-io/pluuug-mcp-server.git",
+  "author": "hsl0505 <hslgood@gmail.com>",
+  "license": "MIT"
+}
