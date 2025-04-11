@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const baseURL = "https://openapi-dev.pluuug.com";
+const baseURL = "https://openapi.pluuug.com";
 
 const instance = axios.create({
   baseURL,
-  timeout: 1000 * 120, // 2분
+  timeout: 1000 * 120,
   headers: { "Content-Type": "application/json" },
 });
 

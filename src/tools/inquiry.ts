@@ -16,17 +16,23 @@ export const getInquiryListTool: [ZodRawShape, ToolCallback<ZodRawShape>] = [
         content: [{ type: "text", text: "의뢰가 없습니다." }],
       };
     }
-    const baseInfo = data.results.map(
+
+    const inquiryList = data.results.map(
       ({ name, estimate, inquiryDate, status }) => {
         return [
-          "이름 | 예상견적 | 문의일시 | 상태 | 폴더",
-          "------|------|------|--------|--------",
           `${name} | ${estimate} | ${inquiryDate} | ${status.title} | ${status.folder.name}`,
         ].join("\n");
       }
-    )[0];
+    );
+
+    const result = [
+      "이름 | 예상견적 | 문의일시 | 상태 | 폴더",
+      "------|------|------|--------|--------",
+      ...inquiryList,
+    ].join("\n");
+
     return {
-      content: [{ type: "text", text: baseInfo }],
+      content: [{ type: "text", text: result }],
     };
   },
 ];

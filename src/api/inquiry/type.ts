@@ -3,7 +3,7 @@ import { z } from "zod";
 export const inquiryListSchema = z.object({
   cursor: z.string().optional(),
   folder_id: z.string().optional(),
-  page_size: z.number().optional(),
+  page_size: z.union([z.number(), z.string()]).optional(),
   search: z.string().optional(),
   status_id: z.string().optional(),
 });

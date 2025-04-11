@@ -3,6 +3,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 import { getInquiryListTool } from "./tools/inquiry.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 
 const main = async () => {
   try {
@@ -12,6 +13,9 @@ const main = async () => {
     });
 
     server.tool("get-inquiry-list", ...getInquiryListTool);
+
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
   } catch (err) {
     console.error("서버 오류", err);
     process.exit(1);
