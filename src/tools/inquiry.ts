@@ -9,7 +9,7 @@ import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 export const getInquiryListTool: [ZodRawShape, ToolCallback<ZodRawShape>] = [
   inquiryListSchema.shape,
   async (params: InquiryListParams) => {
-    const data = await inquiryApi.getInquiryList({ ...params, page_size: 50 });
+    const data = await inquiryApi.getInquiryList(params);
     const isDataEmpty = data.results.length === 0;
     if (isDataEmpty) {
       return {
