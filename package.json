@@ -7,14 +7,30 @@
   "repository": "https://github.com/postoo-io/pluuug-mcp-server.git",
   "author": "hsl0505 <hslgood@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "mcp",
+    "pluuug",
+    "api",
+    "llm",
+    "claude",
+    "model-context-protocol"
+  ],
+  "bin": {
+    "pluuug-mcp-server": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "dev": "tsc -w & node --watch dist/index.js",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.9.0"
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "axios": "^1.8.4",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@types/node": "^22.14.0",
     "typescript": "^5.8.3"
   }
 }
