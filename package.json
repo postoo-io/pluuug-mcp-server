@@ -1,6 +1,6 @@
 {
   "name": "pluuug-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "플러그 openapi를 MCP로 제공하는 패키지",
   "type": "module",
   "main": "dist/index.js",
