@@ -9,7 +9,7 @@ import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 export const getInquiryListTool: [ZodRawShape, ToolCallback<ZodRawShape>] = [
   inquiryListSchema.shape,
   async (params: InquiryListParams) => {
-    const data = await inquiryApi.getInquiryList(params);
+    const data = await inquiryApi.getInquiryList({ ...params, page_size: 50 });
     const isDataEmpty = data.results.length === 0;
     if (isDataEmpty) {
       return {
@@ -31,8 +31,12 @@ export const getInquiryListTool: [ZodRawShape, ToolCallback<ZodRawShape>] = [
       ...inquiryList,
     ].join("\n");
 
+    const message = data.next
+      ? `${result}\n\n현재 ${data.results.length}개의 결과가 표시되었습니다. 다음 페이지의 데이터를 보시려면 '다음'이라고 입력해주세요. (다음 페이지 커서: ${data.next})`
+      : `${result}\n\n현재 ${data.results.length}개의 결과가 표시되었습니다.`;
+
     return {
-      content: [{ type: "text", text: result }],
+      content: [{ type: "text", text: message }],
     };
   },
 ];
